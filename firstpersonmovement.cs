@@ -12,6 +12,7 @@ public class firstpersonmovement : MonoBehaviour
     public bool movementenabled = true;
     public Rigidbody rb;
     public Vector3 rotation;
+    public float rot;
     // Start is called before the first frame update
     void Start()
     {
@@ -59,7 +60,10 @@ public class firstpersonmovement : MonoBehaviour
 
             rotation = new Vector3(0f, Input.GetAxis("Mouse X"), 0);
             transform.Rotate(rotation);
-            camera.transform.Rotate(-Mathf.Clamp(Input.GetAxis("Mouse Y"), -45f, 45f), 0f, 0f);
+            rot += Input.GetAxisRaw("Mouse Y");
+            Debug.Log(rot);
+            rot = Mathf.Clamp(rot, -90f, 90f);
+            camera.transform.localRotation = Quaternion.Euler(-rot, 0f, 0f);
         }
     }
 }
