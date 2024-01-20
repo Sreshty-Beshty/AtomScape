@@ -59,7 +59,7 @@ public class firstpersonmovement : MonoBehaviour
 
             rotation = new Vector3(0f, Input.GetAxis("Mouse X"), 0);
             transform.Rotate(rotation);
-            camera.transform.Rotate(Mathf.Clamp(-Input.GetAxis("Mouse Y"), -90f, 90f), 0f, 0f);
+            camera.transform.Rotate(-Mathf.Clamp(Input.GetAxis("Mouse Y"), -45f, 45f), 0f, 0f);
         }
     }
 }
