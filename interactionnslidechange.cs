@@ -45,7 +45,26 @@ namespace OpenAI
                         slides[i].SetActive(false);
                     }
                     slides[slideno].SetActive(true);
-
+                    if(slideno == 0)
+                    {
+                        caninteract[0] = true;
+                        caninteract[1] = true;
+                    }
+                    if(slideno == 4)
+                    {
+                        interactables[2].SetActive(true);
+                        caninteract[2] = true;
+                    }
+                    if (slideno == 5)
+                    {
+                        interactables[4].SetActive(true);
+                        caninteract[4] = true;
+                    }
+                    if (slideno == 6)
+                    {
+                        interactables[6].SetActive(true);
+                        caninteract[6] = true;
+                    }
                 }
             }
             if (Input.GetKeyDown(KeyCode.E))
@@ -58,7 +77,26 @@ namespace OpenAI
                         slides[i].SetActive(false);
                     }
                     slides[slideno].SetActive(true);
-
+                    if (slideno == 0)
+                    {
+                        caninteract[0] = true;
+                        caninteract[1] = true;
+                    }
+                    if (slideno == 4)
+                    {
+                        interactables[2].SetActive(true);
+                        caninteract[2] = true;
+                    }
+                    if (slideno == 5)
+                    {
+                        interactables[4].SetActive(true);
+                        caninteract[4] = true;
+                    }
+                    if (slideno == 6)
+                    {
+                        interactables[6].SetActive(true);
+                        caninteract[6] = true;
+                    }
                 }
             }
             for(j=0; j<interactables.Count; j++)
@@ -157,7 +195,7 @@ namespace OpenAI
                                     {
                                         ps3.Play();
                                     }
-                                    informationtxt[i] = "Initially Water (H2O), slightly basic, alkeli solution PH > 7.";
+                                    informationtxt[j] = "Initially Water (H2O), slightly basic, alkeli solution PH > 7.";
                                 }
                                 notclicked = false;
                             }
