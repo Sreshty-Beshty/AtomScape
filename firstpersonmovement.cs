@@ -10,10 +10,13 @@ public class firstpersonmovement : MonoBehaviour
     public Vector3 position = new Vector3();
     public GameObject camera;
     public bool movementenabled = true;
+    public Rigidbody rb;
+    public Vector3 rotation;
     // Start is called before the first frame update
     void Start()
     {
-        
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
@@ -49,7 +52,14 @@ public class firstpersonmovement : MonoBehaviour
                 position = transform.position + positionadd;
                 transform.position = new Vector3(position.x, ypos, position.z);
             }
+            if (Input.GetKeyDown(KeyCode.Space) && transform.position.y < 1.001f)
+            {
+                rb.velocity += new Vector3(0, 5f, 0);
+            }
 
+            rotation = new Vector3(0f, Input.GetAxis("Mouse X"), 0);
+            transform.Rotate(rotation);
+            camera.transform.Rotate(Mathf.Clamp(-Input.GetAxis("Mouse Y"), -90f, 90f), 0f, 0f);
         }
     }
 }
