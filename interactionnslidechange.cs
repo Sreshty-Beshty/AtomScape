@@ -16,6 +16,11 @@ namespace OpenAI
         public GameObject informationmenu;
         public Text informationtext;
         public GameObject labCoatStand;
+        public ParticleSystem ps;
+        public int interacts;
+        public ParticleSystem ps1;
+        public ParticleSystem ps2;
+        public ParticleSystem ps3;
 
         // Start is called before the first frame update
         void Start()
@@ -73,22 +78,22 @@ namespace OpenAI
                             {if(i == 0)
                                 {
                                     interactables[i].SetActive(false);
-                                    caninteract[0] = true;
+                                    caninteract[0] = false;
                                     labCoatStand.SetActive(true);
-                                    labCoatStand.GetComponentsInChildren<ParticleSystem>().Play();
+                                    ps.Play();
                                 }
                                else if(i == 1)
                                 {
                                     //maan hasnt sent teacher yet
-                                    caninteract[1] = true;
+                                    ps.Play();
                                 }
                                else if(i == 2)
                                 {
                                     interactables[i].SetActive(false);
                                     interactables[3].SetActive(true); 
                                     caninteract[3] = true;
-                                     caninteract[2] = false;
-
+                                    caninteract[2] = false;
+                                    ps.Play();
                                 }
                                else if(i == 3)
                                 {
@@ -96,7 +101,8 @@ namespace OpenAI
                                     
                                     caninteract[9] = true;
                                     caninteract[3] = false;
-                                   
+                                    ps.Play();
+
                                 }
                                else if(i == 4)
                                 {
@@ -104,10 +110,15 @@ namespace OpenAI
                                     interactables[5].SetActive(true); 
                                     caninteract[5] = true;
                                     caninteract[4] = false;
+                                    ps.Play();
                                 }
                                else if(i == 5)
                                 {
-                                    //action1
+                                    interactables[i].SetActive(false);
+
+                                    caninteract[9] = true;
+                                    caninteract[5] = false;
+                                    ps.Play();
                                 }
                                else if(i == 6)
                                 {
@@ -115,16 +126,38 @@ namespace OpenAI
                                     interactables[7].SetActive(true); 
                                     caninteract[7] = true;
                                     caninteract[6] = false;
+                                    ps.Play();
                                 }
                                else if(i == 7)
                                 {
-                                    //action1
+                                    interactables[i].SetActive(false);
+
+                                    caninteract[9] = true;
+                                    caninteract[7] = false;
+                                    ps.Play();
                                 }
                                else if(i == 8)
                                 {
-                                    //action1
+                                    ps.Play();
                                 }
-                               
+                               else if (i == 9)
+                                {
+                                    interacts += 1;
+                                    ps.Play();
+                                    if (interacts == 1)
+                                    {
+                                        ps1.Play();
+                                    }
+                                    else if (interacts == 2)
+                                    {
+                                        ps2.Play();
+                                    }
+                                    else if (interacts == 3)
+                                    {
+                                        ps3.Play();
+                                    }
+                                    informationtxt[i] = "Initially Water (H2O), slightly basic, alkeli solution PH > 7.";
+                                }
                             }
                         }
                     }
