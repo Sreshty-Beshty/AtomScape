@@ -25,6 +25,7 @@ public class firstpersonmovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         movementenabled = (!gptinput.isFocused);
         if (movementenabled)
         {
