@@ -26,33 +26,33 @@ public class firstpersonmovement : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.W))
             {
-                positionadd = transform.forward * speed * Time.deltaTime;
+                positionadd = transform.right * speed * Time.deltaTime;
                 ypos = transform.position.y;
                 position = transform.position + positionadd;
                 transform.position = new Vector3(position.x, ypos, position.z);
             }
             if (Input.GetKey(KeyCode.S))
             {
-                positionadd = -transform.forward * speed * Time.deltaTime;
+                positionadd = -transform.right * speed * Time.deltaTime;
                 ypos = transform.position.y;
                 position = transform.position + positionadd;
                 transform.position = new Vector3(position.x, ypos, position.z);
             }
             if (Input.GetKey(KeyCode.A))
             {
-                positionadd = -transform.right * speed * Time.deltaTime;
+                positionadd = transform.forward * speed * Time.deltaTime;
                 ypos = transform.position.y;
                 position = transform.position + positionadd;
                 transform.position = new Vector3(position.x, ypos, position.z);
             }
             if (Input.GetKey(KeyCode.D))
             {
-                positionadd = transform.right * speed * Time.deltaTime;
+                positionadd = -transform.forward * speed * Time.deltaTime;
                 ypos = transform.position.y;
                 position = transform.position + positionadd;
                 transform.position = new Vector3(position.x, ypos, position.z);
             }
-            if (Input.GetKeyDown(KeyCode.Space) && transform.position.y < 1.001f)
+            if (Input.GetKeyDown(KeyCode.Space) && transform.position.y < 0.05f)
             {
                 rb.velocity += new Vector3(0, 5f, 0);
             }
