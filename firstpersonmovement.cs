@@ -61,7 +61,6 @@ public class firstpersonmovement : MonoBehaviour
             rotation = new Vector3(0f, Input.GetAxis("Mouse X"), 0);
             transform.Rotate(rotation);
             rot += Input.GetAxisRaw("Mouse Y");
-            Debug.Log(rot);
             rot = Mathf.Clamp(rot, -90f, 90f);
             camera.transform.localRotation = Quaternion.Euler(-rot, 0f, 0f);
         }
