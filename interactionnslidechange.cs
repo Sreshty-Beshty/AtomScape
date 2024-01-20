@@ -22,6 +22,7 @@ namespace OpenAI
         public ParticleSystem ps2;
         public ParticleSystem ps3;
         public bool notclicked;
+        public List<AudioSource> sources = new List<AudioSource>();
         // Start is called before the first frame update
         void Start()
         {
@@ -32,14 +33,16 @@ namespace OpenAI
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.X)) { }
-            informationmenu.SetActive(false);
+            if (Input.GetKeyDown(KeyCode.X)) {
+                informationmenu.SetActive(false);
+            }
             if (Input.GetKeyDown(KeyCode.Q))
 
             {
                 if (slideno > 0)
                 {
                     slideno += -1;
+                    sources[slideno].Play();
                     for (i = 0; i < slides.Count; i++)
                     {
                         slides[i].SetActive(false);
@@ -72,6 +75,7 @@ namespace OpenAI
                 if (slideno < slides.Count)
                 {
                     slideno += 1;
+                    sources[slideno].Play();
                     for (i = 0; i < slides.Count; i++)
                     {
                         slides[i].SetActive(false);
