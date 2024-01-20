@@ -23,6 +23,10 @@ namespace OpenAI
         public ParticleSystem ps3;
         public bool notclicked;
         public List<AudioSource> sources = new List<AudioSource>();
+        public InputField gptinput;
+        public bool canpresskeys;
+        public GameObject gptmenu;
+        public GameObject conveyer;
         // Start is called before the first frame update
         void Start()
         {
@@ -33,10 +37,11 @@ namespace OpenAI
         // Update is called once per frame
         void Update()
         {
+            canpresskeys = !(gptinput.isFocused);
             if (Input.GetKeyDown(KeyCode.X)) {
                 informationmenu.SetActive(false);
             }
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (Input.GetKeyDown(KeyCode.Q)&&canpresskeys)
 
             {
                 if (slideno > 0)
@@ -70,7 +75,7 @@ namespace OpenAI
                     }
                 }
             }
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E)&&canpresskeys)
             {
                 if (slideno < slides.Count)
                 {
@@ -112,12 +117,12 @@ namespace OpenAI
                         if (caninteract[j])
                         {
                             Debug.Log(j);
-                            if (Input.GetKeyDown(KeyCode.M))
+                            if (Input.GetKeyDown(KeyCode.M)&&canpresskeys)
                             {
                                 informationmenu.SetActive(true);
                                 informationtext.text = informationtxt[i];
                             }
-                            if (Input.GetKeyDown(KeyCode.Z) && notclicked)
+                            if (Input.GetKeyDown(KeyCode.Z) && notclicked&&canpresskeys)
                             {if(j == 0)
                                 {
                                     interactables[j].SetActive(false);
@@ -127,7 +132,7 @@ namespace OpenAI
                                 }
                                else if(j == 1)
                                 {
-                                    //maan hasnt sent teacher yet
+                                    gptmenu.SetActive(true);
                                     ps.Play();
                                 }
                                else if(j == 2)
@@ -181,6 +186,8 @@ namespace OpenAI
                                 }
                                else if(j == 8)
                                 {
+                                    conveyer.transform.position = new Vector3(0f, 0f, 1f);
+                                    gptmenu.SetActive(true);
                                     ps.Play();
                                 }
                                else if (j == 9)

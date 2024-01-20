@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class firstpersonmovement : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class firstpersonmovement : MonoBehaviour
     public Rigidbody rb;
     public Vector3 rotation;
     public float rot;
+    public InputField gptinput;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +25,7 @@ public class firstpersonmovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        movementenabled = (!gptinput.isFocused);
         if (movementenabled)
         {
             if (Input.GetKey(KeyCode.W))
