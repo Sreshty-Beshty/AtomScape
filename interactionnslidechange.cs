@@ -27,7 +27,6 @@ namespace OpenAI
         public bool canpresskeys;
         public GameObject gptmenu;
         public GameObject conveyer;
-        public float x;
         // Start is called before the first frame update
         void Start()
         {
@@ -38,18 +37,16 @@ namespace OpenAI
         // Update is called once per frame
         void Update()
         {
-            x = (Input.GetAxis("Fire 1"));
             canpresskeys = !(gptinput.isFocused);
-            if (Input.GetAxis("Fire 3") == 1f) {
+            if (Input.GetKeyDown(KeyCode.X)) {
                 informationmenu.SetActive(false);
-                gptmenu.SetActive(false);
             }
-            if ((x != 0)&&canpresskeys)
+            if (Input.GetKeyDown(KeyCode.Q)&&canpresskeys)
 
             {
                 if (slideno > 0)
                 {
-                    slideno += (int)x;
+                    slideno += -1;
                     sources[slideno].Play();
                     for (i = 0; i < slides.Count; i++)
                     {
@@ -78,6 +75,39 @@ namespace OpenAI
                     }
                 }
             }
+            if (Input.GetKeyDown(KeyCode.E)&&canpresskeys)
+            {
+                if (slideno < slides.Count)
+                {
+                    slideno += 1;
+                    sources[slideno].Play();
+                    for (i = 0; i < slides.Count; i++)
+                    {
+                        slides[i].SetActive(false);
+                    }
+                    slides[slideno].SetActive(true);
+                    if (slideno == 0)
+                    {
+                        caninteract[0] = true;
+                        caninteract[1] = true;
+                    }
+                    if (slideno == 4)
+                    {
+                        interactables[2].SetActive(true);
+                        caninteract[2] = true;
+                    }
+                    if (slideno == 5)
+                    {
+                        interactables[4].SetActive(true);
+                        caninteract[4] = true;
+                    }
+                    if (slideno == 6)
+                    {
+                        interactables[6].SetActive(true);
+                        caninteract[6] = true;
+                    }
+                }
+            }
             for(j=0; j<interactables.Count; j++)
             {
                 if(Vector3.Magnitude(interactables[j].transform.position - transform.position) < 3f)
@@ -87,12 +117,12 @@ namespace OpenAI
                         if (caninteract[j])
                         {
                             Debug.Log(j);
-                            if ((Input.GetAxis("Fire 2") == -1f) && canpresskeys)
+                            if (Input.GetKeyDown(KeyCode.M)&&canpresskeys)
                             {
                                 informationmenu.SetActive(true);
                                 informationtext.text = informationtxt[i];
                             }
-                            if ((Input.GetAxis("Fire 2")==1f) && notclicked&&canpresskeys)
+                            if (Input.GetKeyDown(KeyCode.Z) && notclicked&&canpresskeys)
                             {if(j == 0)
                                 {
                                     interactables[j].SetActive(false);

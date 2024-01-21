@@ -29,14 +29,28 @@ public class firstpersonmovement : MonoBehaviour
         movementenabled = (!gptinput.isFocused);
         if (movementenabled)
         {
-            if (Input.GetAxis("Vertical") != 0f)
+            if (Input.GetKey(KeyCode.W))
             {
                 positionadd = transform.right * speed * Time.deltaTime;
                 ypos = transform.position.y;
                 position = transform.position + positionadd;
                 transform.position = new Vector3(position.x, ypos, position.z);
             }
-            if (Input.GetAxis("Horizontal") != 0f)
+            if (Input.GetKey(KeyCode.S))
+            {
+                positionadd = -transform.right * speed * Time.deltaTime;
+                ypos = transform.position.y;
+                position = transform.position + positionadd;
+                transform.position = new Vector3(position.x, ypos, position.z);
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                positionadd = transform.forward * speed * Time.deltaTime;
+                ypos = transform.position.y;
+                position = transform.position + positionadd;
+                transform.position = new Vector3(position.x, ypos, position.z);
+            }
+            if (Input.GetKey(KeyCode.D))
             {
                 positionadd = -transform.forward * speed * Time.deltaTime;
                 ypos = transform.position.y;
